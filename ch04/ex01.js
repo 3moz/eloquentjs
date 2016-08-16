@@ -3,10 +3,16 @@ var start = parseInt(process.argv[2]),
     step = parseInt(process.argv[4])
 
 var range = function() {
-  var start = arguments[0], end = arguments[1], step = arguments[2];
+  console.log(arguments);
   outputArr = [];
-  for (var i = start; i <= end; i+=step){
-    outputArr.push(i);
+  if (step > 0) {
+    for (var i = arguments[0]; i <= arguments[1]; i+=arguments[2]) {
+      outputArr.push(i);
+    }
+  } else if (step < 0) {
+    for (var i = arguments[1]; i >= arguments[0]; i+=arguments[2]) {
+      outputArr.push(i);
+    }
   }
   console.log(outputArr);
   return outputArr;
