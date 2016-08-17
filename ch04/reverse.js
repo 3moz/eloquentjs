@@ -12,4 +12,18 @@ var reverse = function() {
   return newArr;
 }
 
+var reverseArrayInPlace = function() {
+  var left = null;
+  var right = null;
+  var length = outputArr.length;
+  for (left = 0, right = length-1; left < right; left++, right--) {
+    var temporary = outputArr[left];
+    outputArr[left] = outputArr[right];
+    outputArr[left] = temporary;
+  }
+  return outputArr
+  //see more @http://stackoverflow.com/questions/5276953/what-is-the-most-efficient-way-to-reverse-an-array-in-javascript
+}
+
 console.log(reverse(outputArr));
+console.log(reverseArrayInPlace(outputArr));
