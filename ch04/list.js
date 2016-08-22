@@ -15,8 +15,18 @@ for (var k = 0; k < inputArr.length; k++){
   outputArr.push(parseInt(inputArr[k]));
 }
 var arr = outputArr;
+var newArr = []
 
-var makeList = function(arr) {
+var listToArray = function(list) {
+  if (list.rest != null) {
+    newArr.push(list.value);
+    listToArray(list.rest);
+  } else {
+    newArr.push(list.value);
+  }
+}
+
+var arrayToList = function(arr) {
   var list = null
   for (var i = arr.length-1; i >= 0; i--) {
     list = {
@@ -25,6 +35,8 @@ var makeList = function(arr) {
     }
   }
   console.log(util.inspect(list, {showHidden: false, depth: null}))
+  listToArray(list);
 }
 
-makeList(arr);
+arrayToList(arr);
+console.log(newArr)
