@@ -17,6 +17,8 @@ for (var k = 0; k < inputArr.length; k++){
 var arr = outputArr;
 var newArr = []
 
+
+
 var listToArray = function(list) {
   if (list.rest != null) {
     newArr.push(list.value);
