@@ -9,4 +9,3 @@ var flatten = arr => arr.reduce( //works
 
 console.log(arrays)
 console.log(flatten(arrays))
-console.log(flatten2(arrays))
