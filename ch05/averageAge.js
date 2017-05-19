@@ -28,5 +28,3 @@ for (person in byName) {
 }
 
 console.log("Average age of everyone's mother @ birth was", average(ages))
-
-"test"
