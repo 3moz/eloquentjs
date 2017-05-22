@@ -28,10 +28,15 @@ for (person in byName) {
 }//--> 31.22
 
 var momKnown = ancestry.filter(function(person) {
-    return byName[person.name].mother && byName[byName[person.name].mother]
+    // filter the ancestry array by:
+    // does a person have an entry for their mother in the data?
+    return byName[byName[person.name].mother]
 });
 
 function map(array, transform) {
+    // map the array of people about whom we have Mom data by the transformation:
+    // person.born - byName[person.mother].born, i.e.:
+    // person's birthday minus their mom's birthday, which gives [] of age diffs
     var mapped = []
     for (var i = 0; i < array.length; i++) {
         mapped.push(transform(array[i]));
