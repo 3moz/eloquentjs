@@ -6,6 +6,7 @@ function average(array) {
 }
 
 var byName = [];
+var ages = [];
 
 ancestry.forEach(function(person) {
     byName[person.name] = person;
