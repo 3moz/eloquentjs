@@ -1,12 +1,12 @@
 var ancestry = JSON.parse(require("./code/ancestry.js")) //array of objects
 
-
 function average(array) {
   function plus(a, b) { return a + b; }
   return array.reduce(plus) / array.length;
 }
 
-var byName = {};
+var byName = [];
+var momAgeKnown = [];
 var ages = [];
 
 ancestry.forEach(function(person) {
@@ -23,8 +23,22 @@ for (person in byName) {
     var personMomAgeAtBirth =
     personMomBirthDate != "noRecord" ? personBirthDate - personMomBirthDate : "cant compute"
     
-    typeof(personMomBirthDate)=="number" ? ages.push(personMomAgeAtBirth) : console.log(person+"\'s mother's age not found") 
+    typeof(personMomBirthDate)=="number" ? ages.push(personMomAgeAtBirth) : null 
     
+}//--> 31.22
+
+var momKnown = ancestry.filter(function(person) {
+    return byName[person.name].mother && byName[byName[person.name].mother]
+});
+
+function map(array, transform) {
+    var mapped = []
+    for (var i = 0; i < array.length; i++) {
+        mapped.push(transform(array[i]));
+    }
+    return mapped;
 }
 
-console.log("Average age of everyone's mother @ birth was", average(ages))
+console.log(average(map(momKnown, function(person) {
+    return person.born - byName[person.mother].born    
+}))) //--> 31.22
