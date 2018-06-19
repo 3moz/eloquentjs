@@ -36,11 +36,22 @@ class Group {
         return g.members;
     }
 }
-for (let value of Group.from(["a", "b", "c"])) {
+
+//this block ...
+for (let value of Group.from(["a", "b", "c", 7])) {
     console.log(value);
 }
+
+//and this block ...
+let g = Group.from(["a", "b", "c", 7]);
+for (i of g[Symbol.iterator]()) {
+    console.log(i);
+}
+
+//both produce:
 /**
  * a
  * b
  * c
+ * 7
  */
